@@ -1,0 +1,132 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { Github, Linkedin, Mail, Phone, Send, Instagram } from "lucide-react";
+
+const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  const socialLinks = [
+    { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+    { icon: Github, label: "GitHub", href: "https://github.com" },
+    { icon: Phone, label: "WhatsApp", href: "https://wa.me/1234567890" },
+  ];
+
+  return (
+    <section id="contact" className="py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-muted-foreground text-lg">
+            Let's discuss your next project
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Form */}
+          <div className="glass rounded-2xl p-8 shadow-card">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-secondary border-border"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-secondary border-border"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="bg-secondary border-border min-h-[150px]"
+                  required
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground glow transition-smooth"
+              >
+                Send Message
+                <Send className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
+          </div>
+
+          {/* Social Links */}
+          <div className="glass rounded-2xl p-8 shadow-card flex flex-col justify-center">
+            <h3 className="text-2xl font-bold mb-6">Connect With Me</h3>
+            <div className="space-y-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 bg-secondary rounded-lg hover:bg-accent/10 transition-smooth group"
+                  >
+                    <div className="p-3 rounded-lg bg-accent/20 group-hover:bg-accent/30 transition-smooth">
+                      <Icon className="h-6 w-6 text-accent" />
+                    </div>
+                    <span className="font-medium">{social.label}</span>
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-border">
+              <a
+                href="mailto:contact@example.com"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-smooth"
+              >
+                <Mail className="h-5 w-5" />
+                <span>contact@example.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
