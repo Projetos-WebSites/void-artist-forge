@@ -24,17 +24,17 @@ const TechStack = () => {
           <p className="text-muted-foreground text-lg">Technologies I work with</p>
         </div>
 
-        <div className="grid grid-cols-6 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-6 gap-2 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
           {technologies.map((tech) => {
             const Icon = tech.icon
             return (
-              <div key={tech.name} className="flex flex-col items-center gap-2 group cursor-pointer">
+              <div key={tech.name} className="flex flex-col items-center gap-1 sm:gap-2 group cursor-pointer">
                 <div
-                  className={`p-4 rounded-lg bg-gradient-to-br ${tech.color} group-hover:scale-110 transition-smooth`}
+                  className={`p-2 sm:p-3 md:p-4 rounded-lg bg-gradient-to-br ${tech.color} group-hover:scale-110 transition-smooth w-full aspect-square flex items-center justify-center`}
                 >
-                  <Icon className="h-12 w-12 text-white" />
+                  <Icon className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-white" />
                 </div>
-                <h3 className="font-semibold text-center text-sm">{tech.name}</h3>
+                <h3 className="font-semibold text-center text-[10px] sm:text-xs md:text-sm leading-tight">{tech.name}</h3>
               </div>
             )
           })}
