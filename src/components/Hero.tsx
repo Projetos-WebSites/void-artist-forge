@@ -46,7 +46,7 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-border hover:bg-secondary transition-smooth bg-transparent"
+              className="border-border hover:bg-secondary transition-smooth"
               onClick={() => scrollToSection("about")}
             >
               About Me
