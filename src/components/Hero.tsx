@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
+import LetterGlitch from "@/components/ui/LetterGlitch";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -89,17 +90,16 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side - Image */}
+        {/* Right Side - Glitch Effect */}
         <div className="relative hidden lg:block">
-          <div className="glass rounded-2xl p-8 shadow-card">
-            <div className="aspect-square rounded-xl bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-accent flex items-center justify-center text-6xl font-bold">
-                  P
-                </div>
-                <p className="text-muted-foreground">Portfolio Image</p>
-              </div>
-            </div>
+          <div className="glass rounded-2xl overflow-hidden shadow-card h-[600px]">
+            <LetterGlitch
+              glitchSpeed={50}
+              centerVignette={true}
+              outerVignette={false}
+              smooth={true}
+              glitchColors={['#a855f7', '#8b5cf6', '#7c3aed']}
+            />
           </div>
         </div>
       </div>
