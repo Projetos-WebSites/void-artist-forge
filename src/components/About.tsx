@@ -28,10 +28,21 @@ const About = () => {
               </p>
             </div>
             
-            <div className="flex justify-center pt-4">
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Button 
                 size="lg" 
                 className="bg-accent hover:bg-accent/90 text-accent-foreground glow transition-smooth"
+                onClick={() => {
+                  const element = document.getElementById("projects");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                View Projects
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-border hover:bg-secondary transition-smooth"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download CV
