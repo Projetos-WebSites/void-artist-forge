@@ -1,14 +1,16 @@
-import { Button } from "@/components/ui/button";
-import { Download, ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
-import LetterGlitch from "@/components/ui/LetterGlitch";
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Github, Linkedin, Mail, Instagram } from "lucide-react"
+import LetterGlitch from "@/components/ui/LetterGlitch"
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
+    const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20 relative overflow-hidden">
@@ -21,7 +23,7 @@ const Hero = () => {
           centerVignette={true}
           outerVignette={false}
           smooth={true}
-          glitchColors={['#a855f7', '#8b5cf6', '#7c3aed']}
+          glitchColors={["#a855f7", "#8b5cf6", "#7c3aed"]}
         />
       </div>
 
@@ -32,22 +34,19 @@ const Hero = () => {
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
               Full Stack
               <br />
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Developer
-              </span>
+              <span className="bg-gradient-accent bg-clip-text text-transparent">Developer</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Specialized in building modern web applications with React, Node.js, 
-              and cutting-edge technologies. Passionate about creating elegant solutions 
-              to complex problems.
+              Specialized in building modern web applications with React, Node.js, and cutting-edge technologies.
+              Passionate about creating elegant solutions to complex problems.
             </p>
           </div>
 
           <div className="flex justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
-              className="border-border hover:bg-secondary transition-smooth"
+              className="border-border hover:bg-secondary transition-smooth bg-transparent"
               onClick={() => scrollToSection("about")}
             >
               About Me
@@ -56,39 +55,38 @@ const Hero = () => {
 
           {/* Social Links */}
           <div className="flex gap-4 justify-center pt-4">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <a
+              href="https://github.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
             >
               <Github className="h-5 w-5" />
             </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
+            <a
+              href="https://linkedin.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
             >
               <Linkedin className="h-5 w-5" />
             </a>
-            <a 
-              href="mailto:contact@example.com"
-              className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
-            >
+            <a href="mailto:contact@example.com" className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth">
               <Mail className="h-5 w-5" />
             </a>
-            <a 
-              href="tel:+1234567890"
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
             >
-              <Phone className="h-5 w-5" />
+              <Instagram className="h-5 w-5" />
             </a>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
