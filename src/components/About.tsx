@@ -3,7 +3,9 @@ import { Download } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-20 px-4 relative">
+      {/* Gradient Transition from top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent"></div>
       <div className="max-w-7xl mx-auto">
         <div className="glass rounded-2xl p-8 md:p-12 shadow-card max-w-4xl mx-auto">
           <div className="text-center space-y-6">

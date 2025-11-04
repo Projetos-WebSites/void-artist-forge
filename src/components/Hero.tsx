@@ -12,6 +12,8 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20 relative overflow-hidden">
+      {/* Gradient Transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background z-10"></div>
       {/* Background Glitch Effect */}
       <div className="absolute inset-0 z-0">
         <LetterGlitch
