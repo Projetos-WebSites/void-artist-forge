@@ -19,7 +19,7 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL;
+      const apiUrl = "https://backforportifolio-production.up.railway.app/api/EnviarEmail";
       
       const response = await fetch(apiUrl, {
         method: "POST",
