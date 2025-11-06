@@ -122,26 +122,27 @@ const Projects = () => {
   }, [])
 
   return (
-    <section id="projects" className="py-20 px-4 relative overflow-hidden" ref={carouselContainerRef}>
+    <section id="projects" className="py-20 px-4 relative overflow-visible" ref={carouselContainerRef}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
           <p className="text-muted-foreground text-lg">A selection of my recent work with stunning depth effects</p>
         </div>
 
-        <Carousel
-          opts={{
-            align: "center",
-            loop: true,
-            containScroll: "keepSnaps",
-            skipSnaps: false,
-            duration: 25,
-          }}
-          plugins={[autoplay]}
-          setApi={setCarouselApi}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4 px-4">
+        <div className="py-12 overflow-visible">
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+              containScroll: "keepSnaps",
+              skipSnaps: false,
+              duration: 25,
+            }}
+            plugins={[autoplay]}
+            setApi={setCarouselApi}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 px-10">
             {projects.map((project, index) => {
               const distance = Math.abs(index - activeIndex)
               const isActive = index === activeIndex
@@ -158,6 +159,10 @@ const Projects = () => {
                           ? "scale-90 opacity-70 z-10"
                           : "scale-75 opacity-40 z-0"
                     }`}
+                    style={{
+                      paddingTop: isActive ? "0px" : "20px",
+                      paddingBottom: isActive ? "0px" : "20px",
+                    }}
                   >
                     <div
                       className={`group relative h-[500px] rounded-2xl overflow-hidden transition-all duration-500 ease-out cursor-pointer ${
@@ -231,13 +236,14 @@ const Projects = () => {
             })}
           </CarouselContent>
 
-          <div className="flex justify-center gap-4 mt-12">
-            <CarouselPrevious className="static translate-y-0 h-10 w-10" onClick={handlePrev} />
-            <CarouselNext className="static translate-y-0 h-10 w-10" onClick={handleNext} />
-          </div>
-        </Carousel>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 h-10 w-10" onClick={handlePrev} />
+              <CarouselNext className="static translate-y-0 h-10 w-10" onClick={handleNext} />
+            </div>
+          </Carousel>
+        </div>
 
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-4">
           {projects.map((_, index) => (
             <button
               key={index}
