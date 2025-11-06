@@ -151,16 +151,18 @@ const Projects = () => {
               return (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div
-                    className={`transition-all duration-500 transform ${isActive
+                    className={`transition-all duration-500 transform ${
+                      isActive
                         ? "scale-100 opacity-100 z-20"
                         : isNext || isPrev
                           ? "scale-90 opacity-70 z-10"
                           : "scale-75 opacity-40 z-0"
-                      }`}
+                    }`}
                   >
                     <div
-                      className={`group relative h-[500px] rounded-2xl overflow-hidden transition-all duration-500 ease-out cursor-pointer ${isActive ? "shadow-2xl ring-2 ring-primary/50" : "shadow-lg hover:shadow-xl"
-                        }`}
+                      className={`group relative h-[500px] rounded-2xl overflow-hidden transition-all duration-500 ease-out cursor-pointer ${
+                        isActive ? "shadow-2xl ring-2 ring-primary/50" : "shadow-lg hover:shadow-xl"
+                      }`}
                       style={{
                         transformStyle: "preserve-3d",
                         perspective: "1000px",
@@ -187,26 +189,30 @@ const Projects = () => {
 
                       <div className="relative h-full flex flex-col justify-end p-8 z-10">
                         <div
-                          className={`space-y-4 transform transition-all duration-700 ease-out will-change-transform ${isActive ? "translate-y-0 opacity-100" : "translate-y-8 opacity-60"
-                            } group-hover:translate-y-[-8px]`}
+                          className={`space-y-4 transform transition-all duration-700 ease-out will-change-transform ${
+                            isActive ? "translate-y-0 opacity-100" : "translate-y-8 opacity-60"
+                          } group-hover:translate-y-[-8px]`}
                         >
                           <h3
-                            className={`font-bold text-white transition-all duration-700 ease-out ${isActive ? "text-3xl" : "text-2xl"
-                              }`}
+                            className={`font-bold text-white transition-all duration-700 ease-out ${
+                              isActive ? "text-3xl" : "text-2xl"
+                            }`}
                           >
                             {project.title}
                           </h3>
 
                           <p
-                            className={`text-white/90 leading-relaxed transition-all duration-700 ease-out ${isActive ? "text-base opacity-100" : "text-sm opacity-60"
-                              }`}
+                            className={`text-white/90 leading-relaxed transition-all duration-700 ease-out ${
+                              isActive ? "text-base opacity-100" : "text-sm opacity-60"
+                            }`}
                           >
                             {project.description}
                           </p>
 
                           <div
-                            className={`pt-2 transition-all duration-700 ease-out flex justify-center ${isActive ? "opacity-100" : "opacity-0 pointer-events-none"
-                              }`}
+                            className={`pt-2 transition-all duration-700 ease-out flex justify-center ${
+                              isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+                            }`}
                           >
                             <Button
                               variant="secondary"
@@ -239,8 +245,9 @@ const Projects = () => {
                 carouselApi?.scrollTo(index)
                 handleUserInteraction()
               }}
-              className={`h-2 rounded-full transition-all duration-500 ${index === activeIndex ? "bg-primary w-8" : "bg-primary/30 w-2 hover:bg-primary/50"
-                }`}
+              className={`h-2 rounded-full transition-all duration-500 ${
+                index === activeIndex ? "bg-primary w-8" : "bg-primary/30 w-2 hover:bg-primary/50"
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
