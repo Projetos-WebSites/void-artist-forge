@@ -53,7 +53,13 @@ const Projects = () => {
     }
 
     carouselApi.on("select", updateActiveIndex)
+    carouselApi.on("reInit", updateActiveIndex)
     updateActiveIndex()
+
+    return () => {
+      carouselApi.off("select", updateActiveIndex)
+      carouselApi.off("reInit", updateActiveIndex)
+    }
   }, [carouselApi])
 
   return (
@@ -68,6 +74,8 @@ const Projects = () => {
           opts={{
             align: "center",
             loop: true,
+            containScroll: "trimSnaps",
+            skipSnaps: false,
           }}
           setApi={setCarouselApi}
           className="w-full"
@@ -91,9 +99,9 @@ const Projects = () => {
                     }`}
                   >
                     <div
-                      className={`group relative h-[500px] rounded-2xl overflow-hidden transition-all duration-500 ${
-                        isActive ? "shadow-2xl ring-2 ring-primary/50" : "shadow-lg hover:shadow-xl"
-                      }`}
+                        className={`group relative h-[500px] rounded-2xl overflow-hidden transition-all duration-500 ease-out ${
+                          isActive ? "shadow-2xl ring-2 ring-primary/50" : "shadow-lg hover:shadow-xl"
+                        }`}
                       style={{
                         transformStyle: "preserve-3d",
                         perspective: "1000px",
@@ -104,13 +112,13 @@ const Projects = () => {
 
                       {/* Depth layer */}
                       <div
-                        className="absolute inset-0 bg-black/20"
-                        style={{
-                          transform: isActive ? "translateZ(20px)" : "none",
-                          boxShadow: isActive
-                            ? "inset 0 0 30px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4)"
-                            : "none",
-                        }}
+                         className="absolute inset-0 bg-black/20 will-change-transform"
+                         style={{
+                           transform: isActive ? "translateZ(20px)" : "none",
+                           boxShadow: isActive
+                             ? "inset 0 0 30px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4)"
+                             : "none",
+                         }}
                       />
 
                       {/* Dark Overlay with gradient */}
@@ -123,9 +131,9 @@ const Projects = () => {
                       {/* Content */}
                       <div className="relative h-full flex flex-col justify-end p-8 z-10">
                          <div
-                           className={`space-y-4 transform transition-all duration-500 ${
-                            isActive ? "translate-y-0" : "translate-y-4"
-                          } group-hover:translate-y-[-8px]`}
+                         className={`space-y-4 transform transition-all duration-500 ease-out will-change-transform ${
+                             isActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-80"
+                           } group-hover:translate-y-[-8px]`}
                         >
                           <h3
                             className={`font-bold text-white transition-all duration-500 ${
@@ -173,13 +181,14 @@ const Projects = () => {
 
         <div className="flex justify-center gap-2 mt-8">
           {projects.map((_, index) => (
-            <button
-              key={index}
-              className={`h-2 rounded-full transition-all duration-500 ${
-                index === activeIndex ? "bg-primary w-8" : "bg-primary/30 w-2 hover:bg-primary/50"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+              <button
+                key={index}
+                onClick={() => carouselApi?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  index === activeIndex ? "bg-primary w-8" : "bg-primary/30 w-2 hover:bg-primary/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
           ))}
         </div>
       </div>
