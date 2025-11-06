@@ -56,7 +56,7 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex gap-4 justify-center pt-4">
             <a
-              href="https://github.com"
+              href="https://github.com/joaopedroaranda"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
@@ -64,23 +64,26 @@ const Hero = () => {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/joaopedroa"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
             >
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="mailto:contact@example.com" className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth">
-              <Mail className="h-5 w-5" />
-            </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/joao_019"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
             >
               <Instagram className="h-5 w-5" />
+            </a>
+            <a
+              href="mailto:joaopedroaranda19@gmail.com"
+              className="p-3 glass rounded-lg hover:bg-accent/10 transition-smooth"
+            >
+              <Mail className="h-5 w-5" />
             </a>
           </div>
         </div>

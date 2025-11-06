@@ -27,7 +27,7 @@ const Header = () => {
       <div className="glass rounded-2xl px-6 py-4 transition-smooth">
         <div className="flex items-center justify-between">
           <div className="text-xl font-bold tracking-tight">
-            Portfolio
+            João Pedro
           </div>
 
           {/* Desktop Navigation */}

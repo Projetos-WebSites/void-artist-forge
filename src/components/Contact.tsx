@@ -1,26 +1,30 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Github, Linkedin, Mail, Phone, Send, Instagram } from "lucide-react";
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "sonner"
+import { Github, Linkedin, Mail, Phone, Send, Instagram, CheckCircle2, AlertCircle } from "lucide-react"
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  })
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      
+      const apiUrl = import.meta.env.VITE_API_URL_PROD
+
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -31,43 +35,43 @@ const Contact = () => {
           email: formData.email,
           message: formData.message,
         }),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        throw new Error("Failed to send message")
       }
 
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
+      toast.success("Mensagem enviada com sucesso!", {
+        description: "Obrigado! Responderei em breve.",
+        duration: 5000,
+        icon: <CheckCircle2 className="h-5 w-5 text-green-500" />,
+      })
+
+      setFormData({ name: "", email: "", message: "" })
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
-        variant: "destructive",
-      });
+      toast.error("Erro ao enviar mensagem", {
+        description: "Ocorreu um problema. Tente novamente ou entre em contato por outro meio.",
+        duration: 6000,
+        icon: <AlertCircle className="h-5 w-5 text-red-500" />,
+      })
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
     { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
     { icon: Github, label: "GitHub", href: "https://github.com" },
     { icon: Phone, label: "WhatsApp", href: "https://wa.me/1234567890" },
-  ];
+  ]
 
   return (
     <section id="contact" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-muted-foreground text-lg">
-            Let's discuss your next project
-          </p>
+          <p className="text-muted-foreground text-lg">Let's discuss your next project</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -111,8 +115,8 @@ const Contact = () => {
                   required
                 />
               </div>
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-accent hover:bg-accent/90 text-accent-foreground glow transition-smooth"
                 disabled={isLoading}
               >
@@ -127,7 +131,7 @@ const Contact = () => {
             <h3 className="text-2xl font-bold mb-6">Connect With Me</h3>
             <div className="space-y-4">
               {socialLinks.map((social) => {
-                const Icon = social.icon;
+                const Icon = social.icon
                 return (
                   <a
                     key={social.label}
@@ -141,7 +145,7 @@ const Contact = () => {
                     </div>
                     <span className="font-medium">{social.label}</span>
                   </a>
-                );
+                )
               })}
             </div>
 
@@ -158,7 +162,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
